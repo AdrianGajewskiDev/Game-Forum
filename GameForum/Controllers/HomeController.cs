@@ -5,14 +5,36 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using GameForum.Models;
+using GameForum.Data;
+using GameForum.ViewModels.Forum;
 
 namespace GameForum.Controllers
 {
     public class HomeController : Controller
     {
+        private readonly IForum _forumService;
+
+        public HomeController(IForum forum)
+        {
+            _forumService = forum;
+        }
+
         public IActionResult Index()
         {
-            return View();
+            var forums = _forumService.GetAll().Select(forum => new ForumListingModel
+            {
+                Id = forum.ID,
+                Title = forum.Title,
+                Description = forum.Description,
+                Created = forum.Created
+            });
+
+            var model = new ForumIndexViewModel
+            {
+                ForumList = forums
+            };
+
+            return View(model);
         }
 
         public IActionResult Privacy()

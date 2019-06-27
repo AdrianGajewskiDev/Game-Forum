@@ -10,7 +10,6 @@ namespace GameForum.Data.Models
         public string Title { get; set; }
         public string Description { get; set; }
         public DateTime Created { get; set; }
-        Category Category { get; set; }
     
         public IEnumerable<Post> Posts { get; set; }
     }
