@@ -5540,6 +5540,19 @@
         "runtime": {
           "bin/placeholder/GameForum.Data.dll": {}
         }
+      },
+      "GameForum.Services/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v2.2",
+        "dependencies": {
+          "GameForum.Data": "1.0.0"
+        },
+        "compile": {
+          "bin/placeholder/GameForum.Services.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/GameForum.Services.dll": {}
+        }
       }
     }
   },
@@ -14406,11 +14419,17 @@
       "type": "project",
       "path": "../GameForum.Data/GameForum.Data.csproj",
       "msbuildProject": "../GameForum.Data/GameForum.Data.csproj"
+    },
+    "GameForum.Services/1.0.0": {
+      "type": "project",
+      "path": "../GameForum.Services/GameForum.Services.csproj",
+      "msbuildProject": "../GameForum.Services/GameForum.Services.csproj"
     }
   },
   "projectFileDependencyGroups": {
     ".NETCoreApp,Version=v2.2": [
       "GameForum.Data >= 1.0.0",
+      "GameForum.Services >= 1.0.0",
       "Microsoft.AspNetCore.App >= 2.2.0",
       "Microsoft.AspNetCore.Razor.Design >= 2.2.0",
       "Microsoft.NETCore.App >= 2.2.0"
@@ -14448,6 +14467,9 @@
           "projectReferences": {
             "C:\\Users\\HP-8200SFF\\source\\repos\\GameForum\\GameForum.Data\\GameForum.Data.csproj": {
               "projectPath": "C:\\Users\\HP-8200SFF\\source\\repos\\GameForum\\GameForum.Data\\GameForum.Data.csproj"
+            },
+            "C:\\Users\\HP-8200SFF\\source\\repos\\GameForum\\GameForum.Services\\GameForum.Services.csproj": {
+              "projectPath": "C:\\Users\\HP-8200SFF\\source\\repos\\GameForum\\GameForum.Services\\GameForum.Services.csproj"
             }
           }
         }

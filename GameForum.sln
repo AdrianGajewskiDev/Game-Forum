@@ -7,6 +7,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GameForum", "GameForum\Game
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GameForum.Data", "GameForum.Data\GameForum.Data.csproj", "{867A6516-208F-4095-A89B-273A5EAA4278}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GameForum.Services", "GameForum.Services\GameForum.Services.csproj", "{5FD4832E-A270-4A97-A355-C8DB158CEE1A}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{867A6516-208F-4095-A89B-273A5EAA4278}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{867A6516-208F-4095-A89B-273A5EAA4278}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{867A6516-208F-4095-A89B-273A5EAA4278}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5FD4832E-A270-4A97-A355-C8DB158CEE1A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5FD4832E-A270-4A97-A355-C8DB158CEE1A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5FD4832E-A270-4A97-A355-C8DB158CEE1A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5FD4832E-A270-4A97-A355-C8DB158CEE1A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
