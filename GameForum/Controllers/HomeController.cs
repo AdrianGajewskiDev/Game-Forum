@@ -13,10 +13,12 @@ namespace GameForum.Controllers
     public class HomeController : Controller
     {
         private readonly IForum _forumService;
+        private readonly IPost _postService;
 
-        public HomeController(IForum forum)
+        public HomeController(IForum forum, IPost post)
         {
             _forumService = forum;
+            _postService = post;
         }
 
         public IActionResult Index()
@@ -32,6 +34,29 @@ namespace GameForum.Controllers
             var model = new ForumIndexViewModel
             {
                 ForumList = forums
+            };
+
+            return View(model);
+        }
+
+        public IActionResult Topic(int id)
+        {
+            var forum = _forumService.GetById(id);
+
+            var posts = _postService.GetAllByForumID(forum.ID).Select(post => new PostListingModel
+            {
+                ID = post.ID,
+                AuthorName = post.AuthorName,
+                Content = post.Content,
+                Created = post.Created,
+                ForumID = post.ForumID,
+                Title = post.Title
+            });
+
+            var model = new ForumTopicViewModel
+            { 
+                Posts = posts,
+                ForumTitle = forum.Title
             };
 
             return View(model);
