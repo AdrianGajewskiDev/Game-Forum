@@ -14,10 +14,7 @@
                         @post.AuthorName
                     </td>
                     <td>
-                        @post.Title
-                    </td>
-                    <td>
-                        @post.Content
+                        <a asp-controller="Post" asp-action="Index" asp-route-id="@post.ID">@post.Title</a> 
                     </td>
                     <td>
                         @post.Created

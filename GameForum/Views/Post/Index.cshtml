@@ -1,0 +1,29 @@
+﻿@model GameForum.ViewModels.Forum.PostDetailViewlModel
+
+<h1 class="text-center">Created: @Model.Created by @Model.AuthorName</h1>
+
+<div class="card" style="width: 100%">
+    <div class="card-body">
+        <h5 class="card-title">@Model.Title</h5>
+        <p class="card-text">@Model.Content</p>
+    </div>
+</div>
+@if(Model.Replies.Any())
+{
+    @foreach (var reply in Model.Replies)
+    {
+<div class="card" style="width: 100%">
+    <div class="card-body">
+        <h5 class="card-title">@reply.AuthorName</h5>
+        <h5 class="card-title pull-right">@reply.Created</h5>
+        <p class="card-text">@reply.Content</p>
+    </div>
+</div>
+    }
+
+}
+else
+{
+    <h3>There are no replies available for this post</h3>
+}
+
