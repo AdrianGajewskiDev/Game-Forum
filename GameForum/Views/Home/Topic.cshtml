@@ -2,6 +2,10 @@
 
 <h1>Welcome to @Model.ForumTitle Forum !!</h1>
 
+<a asp-controller="Post" asp-action="Create" asp-route-id="@Model.ForumID">
+    Create post
+</a>
+
 @if (Model.Posts.Any())
 {
     <div class="container">

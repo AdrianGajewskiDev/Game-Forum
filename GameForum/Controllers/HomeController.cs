@@ -56,7 +56,8 @@ namespace GameForum.Controllers
             var model = new ForumTopicViewModel
             { 
                 Posts = posts,
-                ForumTitle = forum.Title
+                ForumTitle = forum.Title,
+                ForumID = forum.ID
             };
 
             return View(model);

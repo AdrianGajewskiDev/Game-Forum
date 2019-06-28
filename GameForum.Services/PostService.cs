@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 using GameForum.Data;
 using GameForum.Data.Models;
 
@@ -12,6 +13,13 @@ namespace GameForum.Services
         public PostService(ApplicationDbContext context)
         {
             _dbContext = context;
+        }
+
+        public async Task AddPost(Post post)
+        {
+            _dbContext.Posts.Add(post);
+
+            await _dbContext.SaveChangesAsync();
         }
 
         public IEnumerable<Post> GetAll()

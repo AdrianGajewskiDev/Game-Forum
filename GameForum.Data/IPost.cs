@@ -1,5 +1,6 @@
 ﻿using GameForum.Data.Models;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace GameForum.Data
 {
@@ -8,5 +9,7 @@ namespace GameForum.Data
         Post GetByID(int id);
         IEnumerable<Post> GetAllByForumID(int id);
         IEnumerable<Post> GetAll();
+
+        Task AddPost(Post post);
     }
 }
