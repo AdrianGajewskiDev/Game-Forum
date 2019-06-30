@@ -104,13 +104,13 @@ namespace GameForum.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> AddReply(NewReplyModel newReplyModel, Post post)
+        public async Task<IActionResult> AddReply(NewReplyModel newReplyModel)
         {
             var reply = CreateReply(newReplyModel);
 
             await _postService.AddReply(reply);
-
-            return RedirectToAction("Index", "Home", reply.PostID);
+            
+            return RedirectToAction("Index", "Post", new { id = reply.PostID });
         }
 
         private PostReply CreateReply(NewReplyModel newReplyModel)
