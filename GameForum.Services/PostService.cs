@@ -22,6 +22,13 @@ namespace GameForum.Services
             await _dbContext.SaveChangesAsync();
         }
 
+        public async Task AddReply(PostReply postReply)
+        {
+            _dbContext.Replies.Add(postReply);
+
+            await _dbContext.SaveChangesAsync();
+        }
+
         public IEnumerable<Post> GetAll()
         {
             return _dbContext.Posts;
@@ -35,6 +42,11 @@ namespace GameForum.Services
         public Post GetByID(int id)
         {
             return GetAll().Where(x => x.ID == id).FirstOrDefault();
+        }
+
+        public IEnumerable<PostReply> GetPostRepliesByPostID(int postID)
+        {
+            return _dbContext.Replies.Where(x => x.PostID == postID);
         }
     }
 }

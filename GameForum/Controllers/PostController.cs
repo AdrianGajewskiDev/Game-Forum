@@ -24,12 +24,13 @@ namespace GameForum.Controllers
         public IActionResult Index(int id)
         {
             var post = _postService.GetByID(id);
+            var postRepliesFromPost = _postService.GetPostRepliesByPostID(post.ID);
 
             IEnumerable<PostReplyModel> postReplies;
 
-            if (post.PostReplies != null)
+            if (postRepliesFromPost != null)
             {
-                postReplies = BuildPostReplyModel(post.PostReplies);
+                postReplies = BuildPostReplyModel(postRepliesFromPost);
             }
             else
             {
@@ -58,7 +59,6 @@ namespace GameForum.Controllers
             {
                 ForumID = forum.ID,
                 ForumName = forum.Title
-                
             };
 
             return View(model);
@@ -89,13 +89,48 @@ namespace GameForum.Controllers
             };
         }
 
+        public IActionResult Reply(int id)
+        {
+            var post = _postService.GetByID(id);
+            var forum = _forumService.GetById(post.ForumID);
+            var model = new NewReplyModel
+            {
+                PostID = post.ID,
+                ForumTitle = forum.Title
+            };
+
+            return View(model);
+
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> AddReply(NewReplyModel newReplyModel, Post post)
+        {
+            var reply = CreateReply(newReplyModel);
+
+            await _postService.AddReply(reply);
+
+            return RedirectToAction("Index", "Home", reply.PostID);
+        }
+
+        private PostReply CreateReply(NewReplyModel newReplyModel)
+        {
+            return new PostReply
+            {
+                Author = "User",
+                Content = newReplyModel.Content,
+                Created = DateTime.UtcNow,
+                PostID = newReplyModel.PostID
+            };
+        }
+
         private IEnumerable<PostReplyModel> BuildPostReplyModel(IEnumerable<PostReply> postReplies)
         {
             return postReplies.Select(post => new PostReplyModel
             {
                 AuthorName = post.Author,
                 Content = post.Content,
-                Created  = post.Created,
+                Created = post.Created,
                 ID = post.ID,
                 PostID = post.PostID
             });
