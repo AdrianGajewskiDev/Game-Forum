@@ -40,19 +40,37 @@ namespace GameForum.Controllers
             return View(model);
         }
 
-        public IActionResult Topic(int id)
+        public IActionResult Topic(int id, string searchQuery)
         {
             var forum = _forumService.GetById(id);
 
-            var posts = _postService.GetAllByForumID(forum.ID).Select(post => new PostListingModel
+            IEnumerable<PostListingModel> posts;
+
+            if(string.IsNullOrEmpty(searchQuery))
             {
-                ID = post.ID,
-                AuthorName = post.AuthorName,
-                Content = post.Content,
-                Created = post.Created,
-                ForumID = post.ForumID,
-                Title = post.Title
-            });
+                posts = _postService.GetAllByForumID(forum.ID).Select(post => new PostListingModel
+                {
+                    ID = post.ID,
+                    AuthorName = post.AuthorName,
+                    Content = post.Content,
+                    Created = post.Created,
+                    ForumID = post.ForumID,
+                    Title = post.Title
+                });
+            }
+            else
+            {
+                posts = _postService.GetBySearchQuery(searchQuery, forum.ID).Select(post => new PostListingModel
+                {
+                    ID = post.ID,
+                    AuthorName = post.AuthorName,
+                    Content = post.Content,
+                    Created = post.Created,
+                    ForumID = post.ForumID,
+                    Title = post.Title
+                });
+            }
+         
 
             var model = new ForumTopicViewModel
             { 
@@ -62,6 +80,12 @@ namespace GameForum.Controllers
             };
 
             return View(model);
+        }
+
+        [HttpPost]
+        public IActionResult Search(int id, string searchQuery)
+        {
+            return RedirectToAction("Topic", new { id ,searchQuery});
         }
 
         public IActionResult Privacy()

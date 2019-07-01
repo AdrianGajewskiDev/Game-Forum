@@ -9,7 +9,7 @@ namespace GameForum.Services
     {
         private readonly ApplicationDbContext _dbContext;
 
-        public ForumService(ApplicationDbContext context)
+         public ForumService(ApplicationDbContext context)
         {
             _dbContext = context;
         }

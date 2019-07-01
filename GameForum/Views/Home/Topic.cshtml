@@ -2,7 +2,12 @@
 
 <div class="container d-inline-flex">
     <h1>Welcome to @Model.ForumTitle Forum !!</h1>
-
+    <form asp-controller="Home" asp-action="Search" method="post">
+        <input asp-for="SearchQuery" type="text" placeholder="Search..." class="input-search"/>
+        <button type="submit" class="btn" asp-route-id="@Model.ForumID">
+            <i class="fas fa-search"></i>
+        </button>
+    </form>
     <a asp-controller="Post" asp-action="Create" asp-route-id="@Model.ForumID" class="btn btn-addPost">
         Create post
     </a>
