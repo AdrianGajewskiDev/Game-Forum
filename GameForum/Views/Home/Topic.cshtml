@@ -1,10 +1,13 @@
 ﻿@model GameForum.ViewModels.Forum.ForumTopicViewModel
 
-<h1>Welcome to @Model.ForumTitle Forum !!</h1>
+<div class="container d-inline-flex">
+    <h1>Welcome to @Model.ForumTitle Forum !!</h1>
 
-<a asp-controller="Post" asp-action="Create" asp-route-id="@Model.ForumID">
-    Create post
-</a>
+    <a asp-controller="Post" asp-action="Create" asp-route-id="@Model.ForumID" class="btn btn-addPost">
+        Create post
+    </a>
+
+</div>
 
 @if (Model.Posts.Any())
 {
