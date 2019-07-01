@@ -28,7 +28,8 @@ namespace GameForum.Controllers
                 Id = forum.ID,
                 Title = forum.Title,
                 Description = forum.Description,
-                Created = forum.Created
+                Created = forum.Created,
+                ImageUrl = forum.ImageUrl
             });
 
             var model = new ForumIndexViewModel

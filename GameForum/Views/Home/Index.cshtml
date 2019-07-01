@@ -1,24 +1,19 @@
 ﻿@model GameForum.ViewModels.Forum.ForumIndexViewModel
 
-
 <div class="container">
-    <table class="table table-hover"> 
-        <tbody>
-            @foreach (var forum in Model.ForumList)
-            {
-            <tr>
-                <td>
-                    <a asp-controller="Home" asp-action="Topic" asp-route-id="@forum.Id"> @forum.Title</a>
-                </td>
-                <td>
-                    @forum.Description
-                </td>
-                <td>
-                    @forum.Created
-                </td>
-            </tr>
-            }
-        </tbody>
-    </table>
-    
+    <div class="row">
+        @foreach (var forum in Model.ForumList)
+        {
+            <div class="col-lg-4">
+                <div class="card" style="width: 18rem; margin-top: 10px;">
+                    <img src="@forum.ImageUrl" class="card-img-top img-custom" alt="Forum Image">
+                    <div class="card-body">
+                        <h5 class="card-title">@forum.Title</h5>
+                        <p class="card-text">@forum.Description</p>
+                        <a asp-controller="Home" asp-action="Topic" asp-route-id="@forum.Id" class="btn btn-primary">View Forum</a>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
 </div>
