@@ -115,6 +115,13 @@ body {
     height: 50%;
 }
 
-.text-borderBottom{
+.fas{
+    color: white;
+    cursor: pointer;
+    margin-top: 17px;
+    margin-left: 5px;
+}
+
+.text-borderBottom {
     border-bottom: 4px solid blue;
 }
