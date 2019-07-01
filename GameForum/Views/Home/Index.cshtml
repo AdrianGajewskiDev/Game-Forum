@@ -1,5 +1,11 @@
 ﻿@model GameForum.ViewModels.Forum.ForumIndexViewModel
 
+<div class="container d-inline-flex">
+    <h1 class="text-center mb-5 text-borderBottom">Welcome to our Forum !!</h1>
+    <input type="text" class="input-search" placeholder="  Search for posts...."/>
+</div>
+
+
 <div class="container">
     <div class="row">
         @foreach (var forum in Model.ForumList)
