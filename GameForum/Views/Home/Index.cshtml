@@ -1,0 +1,24 @@
+﻿@model GameForum.ViewModels.Forum.ForumIndexViewModel
+
+<div class="container d-inline-flex">
+    <h1 class="text-center mb-5 text-borderBottom">Welcome to our Forum !!</h1>
+</div>
+
+
+<div class="container">
+    <div class="row">
+        @foreach (var forum in Model.ForumList)
+        {
+            <div class="col-lg-4">
+                <div class="card card-forum" style="width: 18rem; margin-top: 10px;">
+                    <img src="@forum.ImageUrl" class="card-img-top img-custom" alt="Forum Image">
+                    <div class="card-body">
+                        <h5 class="card-title">@forum.Title</h5>
+                        <p class="card-text">@forum.Description</p>
+                        <a asp-controller="Home" asp-action="Topic" asp-route-id="@forum.Id" class="btn btn-primary">View Forum</a>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</div>

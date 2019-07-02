@@ -1,0 +1,43 @@
+﻿@model GameForum.ViewModels.Forum.ForumTopicViewModel
+
+<div class="container d-inline-flex">
+    <h1>Welcome to @Model.ForumTitle Forum !!</h1>
+    <form asp-controller="Home" asp-action="Search" method="post">
+        <input asp-for="SearchQuery" type="text" placeholder="Search..." class="input-search"/>
+        <button type="submit" class="btn" asp-route-id="@Model.ForumID">
+            <i class="fas fa-search"></i>
+        </button>
+    </form>
+    <a asp-controller="Post" asp-action="Create" asp-route-id="@Model.ForumID" class="btn btn-addPost">
+        Create post
+    </a>
+
+</div>
+
+@if (Model.Posts.Any())
+{
+    <div class="container">
+        <table class="table table-hover">
+            <tbody>
+                @foreach (var post in Model.Posts)
+                {
+                <tr>
+                    <td>
+                        @post.AuthorName
+                    </td>
+                    <td>
+                        <a asp-controller="Post" asp-action="Index" asp-route-id="@post.ID">@post.Title</a> 
+                    </td>
+                    <td>
+                        @post.Created
+                    </td>
+                </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+}
+else
+{
+    <h1>It looks like there are no posts at @Model.ForumTitle Forum yet :(</h1>
+}

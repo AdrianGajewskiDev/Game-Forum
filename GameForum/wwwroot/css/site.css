@@ -1,0 +1,127 @@
+﻿
+
+a.navbar-brand {
+    white-space: normal;
+    text-align: center;
+    word-break: break-all;
+}
+
+html {
+    font-size: 14px;
+}
+
+@media (min-width: 768px) {
+    html {
+        font-size: 16px;
+    }
+}
+
+.border-top {
+    border-top: 1px solid #e5e5e5;
+}
+
+.border-bottom {
+    border-bottom: 1px solid #e5e5e5;
+}
+
+.box-shadow {
+    box-shadow: 0 .25rem .75rem rgba(0, 0, 0, .05);
+}
+
+button.accept-policy {
+    font-size: 1rem;
+    line-height: inherit;
+}
+
+/* Sticky footer styles
+-------------------------------------------------- */
+html {
+    position: relative;
+    min-height: 100%;
+}
+
+body {
+    /* Margin bottom by footer height */
+    margin-bottom: 60px;
+    background-image: url("../images/BG.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    white-space: nowrap;
+    /* Set the fixed height of the footer here */
+    height: 60px;
+    line-height: 60px; /* Vertically center the text there */
+}
+
+.table {
+    background-color: #fff;
+    opacity: 0.5;
+    color: black;
+    font-size: 1.2rem;
+}
+
+.footer {
+    background-color: #333;
+}
+
+.img-custom {
+    height: 20vh;
+}
+
+.card-forum {
+    transition: transform .5s ease-out;
+}
+
+    .card-forum:hover {
+        transform: scale(1.05);
+    }
+
+.btn-addPost a {
+    text-decoration: none;
+}
+
+.btn-addPost {
+    color: #fff;
+    margin-left: 50px;
+    margin-top: 7px;
+    width: 50%;
+    height: 100%;
+    background-color: darkgreen;
+    transition: transform .5s ease-out;
+}
+
+    .btn-addPost:hover {
+        color: #fff;
+        transform: scale(1.05);
+    }
+
+.card-reply{
+    background-color: #333;
+    color: #fff;
+}
+
+.input-search {
+    border-radius: 50px;
+    border-color: blue;
+    border-width: 3px;
+    margin-top: 10px;
+    margin-left: 15vw;
+    width: 30%;
+    height: 50%;
+}
+
+.fas{
+    color: white;
+    cursor: pointer;
+    margin-top: 17px;
+    margin-left: 5px;
+}
+
+.text-borderBottom {
+    border-bottom: 4px solid blue;
+}
