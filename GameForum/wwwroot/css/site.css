@@ -125,3 +125,27 @@ body {
 .text-borderBottom {
     border-bottom: 4px solid blue;
 }
+
+.slideAndFadeIn {
+    opacity: 0;
+    transform: translateX(-1000px);
+    animation: SlideAndFadeIn 1s forwards;
+    animation-delay: 0.5s;
+}
+
+@keyframes SlideAndFadeIn
+{
+    0% {
+        opacity: 0;
+        transform: translateX(-1000px);
+    }
+
+    80% {
+        opacity: 1;
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}

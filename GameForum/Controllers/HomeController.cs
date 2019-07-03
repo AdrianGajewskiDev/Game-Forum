@@ -97,7 +97,7 @@ namespace GameForum.Controllers
 
             await _forumService.Add(forum);
 
-            return RedirectToAction("Index");
+            return RedirectToAction("Topic");
         }
 
         private Forum CreateForumFromModel(NewForumModel model)

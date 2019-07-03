@@ -1,17 +1,18 @@
 ﻿@model GameForum.ViewModels.Forum.ForumIndexViewModel
 
-<div class="container d-inline-flex">
-    <h1 class="text-center mb-5 text-borderBottom">Welcome to our Forum !!</h1>
-</div>
+    <div class="container d-inline-flex">
+        <h1 class="text-center mb-5 text-borderBottom">Welcome to our Forum !!</h1>
+        <a asp-controller="Home" asp-action="CreateForum" type="button" class="btn btn-secondary ml-5" style="height: 40px;">Create Forum</a>
 
-<a asp-controller="Home" asp-action="CreateForum" type="button" class="btn btn-secondary">Create Forum</a>
+    </div>
+
 
 <div class="container">
     <div class="row">
         @foreach (var forum in Model.ForumList)
         {
-            <div class="col-lg-4">
-                <div class="card card-forum" style="width: 18rem; margin-top: 10px;">
+            <div class="col-lg-4 col-sm-6">
+                <div class="card card-forum slideAndFadeIn" style="width: 18rem; margin-top: 10px;">
                     <img src="@forum.ImageUrl" class="card-img-top img-custom" alt="Forum Image">
                     <div class="card-body">
                         <h5 class="card-title">@forum.Title</h5>

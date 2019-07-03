@@ -6,6 +6,8 @@ using GameForum.Data;
 using GameForum.Data.Models;
 using GameForum.Models;
 using GameForum.ViewModels.Forum;
+using Google.Apis.Auth.OAuth2;
+using Google.Cloud.Translation.V2;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 
@@ -18,7 +20,7 @@ namespace GameForum.Controllers
         private readonly UserManager<IdentityUser> _userManager;
         private readonly SignInManager<IdentityUser> _signInManager;
 
-        public PostController(IPost post, IForum forum, UserManager<IdentityUser> userManager, SignInManager<IdentityUser>  signInManager)
+        public PostController(IPost post, IForum forum, UserManager<IdentityUser> userManager, SignInManager<IdentityUser> signInManager)
         {
             _postService = post;
             _forumService = forum;
@@ -84,11 +86,11 @@ namespace GameForum.Controllers
         {
             string username = "User";
 
-            if(_signInManager.IsSignedIn(User))
+            if (_signInManager.IsSignedIn(User))
             {
                 username = User.Identity.Name;
             }
-            
+
 
             return new Post
             {
@@ -122,7 +124,7 @@ namespace GameForum.Controllers
             var reply = CreateReply(newReplyModel);
 
             await _postService.AddReply(reply);
-            
+
             return RedirectToAction("Index", "Post", new { id = reply.PostID });
         }
 
