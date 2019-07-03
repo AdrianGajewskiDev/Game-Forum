@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Threading.Tasks;
 
 namespace GameForum.Data
 {
@@ -9,5 +10,7 @@ namespace GameForum.Data
     {
         Forum GetById(int id);
         IEnumerable<Forum> GetAll();
+
+        Task Add(Forum forum);
     }
 }

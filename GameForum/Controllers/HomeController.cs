@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 using GameForum.Models;
 using GameForum.Data;
 using GameForum.ViewModels.Forum;
+using GameForum.Data.Models;
 
 namespace GameForum.Controllers
 {
@@ -80,6 +81,34 @@ namespace GameForum.Controllers
             };
 
             return View(model);
+        }
+
+        public IActionResult CreateForum()
+        {
+            var model = new NewForumModel{ };
+
+            return View(model);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Create(NewForumModel model)
+        {
+            var forum = CreateForumFromModel(model);
+
+            await _forumService.Add(forum);
+
+            return RedirectToAction("Index");
+        }
+
+        private Forum CreateForumFromModel(NewForumModel model)
+        {
+            return new Forum
+            {
+                Created = DateTime.UtcNow,
+                Description = model.Description,
+                ImageUrl = model.ImageUrl,
+                Title = model.Title
+            };
         }
 
         [HttpPost]
