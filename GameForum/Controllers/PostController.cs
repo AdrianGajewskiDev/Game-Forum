@@ -6,6 +6,7 @@ using GameForum.Data;
 using GameForum.Data.Models;
 using GameForum.Models;
 using GameForum.ViewModels.Forum;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 
 namespace GameForum.Controllers
@@ -14,11 +15,15 @@ namespace GameForum.Controllers
     {
         private readonly IPost _postService;
         private readonly IForum _forumService;
+        private readonly UserManager<IdentityUser> _userManager;
+        private readonly SignInManager<IdentityUser> _signInManager;
 
-        public PostController(IPost post, IForum forum)
+        public PostController(IPost post, IForum forum, UserManager<IdentityUser> userManager, SignInManager<IdentityUser>  signInManager)
         {
             _postService = post;
             _forumService = forum;
+            _userManager = userManager;
+            _signInManager = signInManager;
         }
 
         public IActionResult Index(int id)
@@ -77,9 +82,17 @@ namespace GameForum.Controllers
 
         private Post CreatePost(NewPostModel post)
         {
+            string username = "User";
+
+            if(_signInManager.IsSignedIn(User))
+            {
+                username = User.Identity.Name;
+            }
+            
+
             return new Post
             {
-                AuthorName = "User",
+                AuthorName = username,
                 Content = post.Content,
                 Created = DateTime.UtcNow,
                 ForumID = post.ForumID,
@@ -115,9 +128,16 @@ namespace GameForum.Controllers
 
         private PostReply CreateReply(NewReplyModel newReplyModel)
         {
+            string username = "User";
+
+            if (_signInManager.IsSignedIn(User))
+            {
+                username = User.Identity.Name;
+            }
+
             return new PostReply
             {
-                Author = "User",
+                Author = username,
                 Content = newReplyModel.Content,
                 Created = DateTime.UtcNow,
                 PostID = newReplyModel.PostID
