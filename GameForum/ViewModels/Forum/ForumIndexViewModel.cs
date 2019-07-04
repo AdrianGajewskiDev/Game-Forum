@@ -8,6 +8,7 @@ namespace GameForum.ViewModels.Forum
 {
     public class ForumIndexViewModel
     {
+        public string SearchQuery { get; set; }
         public IEnumerable<ForumListingModel> ForumList { get; set; }
     }
 }

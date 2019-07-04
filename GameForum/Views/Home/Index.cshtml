@@ -1,26 +1,42 @@
 ﻿@model GameForum.ViewModels.Forum.ForumIndexViewModel
 
-    <div class="container d-inline-flex">
-        <h1 class="text-center mb-5 text-borderBottom">Welcome to our Forum !!</h1>
-        <a asp-controller="Home" asp-action="CreateForum" type="button" class="btn btn-secondary ml-5" style="height: 40px;">Create Forum</a>
+<section id="showcase">
+    <div class="container showcasecl">
+        <h1>Welcome to our Forum !!!</h1>
+        <p>The newest gaming forum to bring all gaming community together</p>
+        <form asp-controller="Home" asp-action="SearchGlobalResult" method="post">
 
+            <div class="input-group mb-3 input-search-custom">
+                <div class="input-group-prepend">
+                    <button class="btn btn-outline-secondary btn-search" type="submit" id="button-addon1" style="padding: 0; width: 50px;"><i class="fas fa-search"></i></button>
+                </div>
+                <input type="text" class="form-control input-search-border" placeholder="Search the community" asp-for="SearchQuery">
+            </div>
+
+        </form>
     </div>
+</section>
 
-
-<div class="container">
-    <div class="row">
-        @foreach (var forum in Model.ForumList)
-        {
-            <div class="col-lg-4 col-sm-6">
-                <div class="card card-forum slideAndFadeIn" style="width: 18rem; margin-top: 10px;">
-                    <img src="@forum.ImageUrl" class="card-img-top img-custom" alt="Forum Image">
-                    <div class="card-body">
-                        <h5 class="card-title">@forum.Title</h5>
-                        <p class="card-text">@forum.Description</p>
-                        <a asp-controller="Home" asp-action="Topic" asp-route-id="@forum.Id" class="btn btn-primary">View Forum</a>
+<section id="forums">
+    <div class="container">
+        <div class="row">
+            @foreach (var forum in Model.ForumList)
+            {
+                <div class="col-lg-4 col-sm-6">
+                    <div class="card card-forum" style="width: 18rem; margin-top: 10px;">
+                        <img src="@forum.ImageUrl" class="card-img-top img-custom" alt="Forum Image">
+                        <div class="card-body">
+                            <h5 class="card-title">@forum.Title</h5>
+                            <p class="card-text">@forum.Description</p>
+                            <a asp-controller="Home" asp-action="Topic" asp-route-id="@forum.Id" class="btn btn-primary">View Forum</a>
+                        </div>
                     </div>
                 </div>
-            </div>
-        }
+            }
+        </div>
     </div>
-</div>
+
+
+</section>
+
+

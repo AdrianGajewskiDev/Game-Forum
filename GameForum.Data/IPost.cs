@@ -8,6 +8,7 @@ namespace GameForum.Data
     {
         Post GetByID(int id);
         IEnumerable<Post> GetBySearchQuery(string searchQuery, int id);
+        IEnumerable<Post> GetBySearchQuery(string searchQuery);
         IEnumerable<PostReply> GetPostRepliesByPostID(int postID);
         IEnumerable<Post> GetAllByForumID(int id);
         IEnumerable<Post> GetAll();

@@ -112,9 +112,30 @@ namespace GameForum.Controllers
         }
 
         [HttpPost]
-        public IActionResult Search(int id, string searchQuery)
+        public IActionResult Search(int id, string searchQuery, bool global)
         {
-            return RedirectToAction("Topic", new { id ,searchQuery});
+            return RedirectToAction("Topic", new { id, searchQuery, global });
+        }
+
+        [HttpPost]
+        public IActionResult SearchGlobalResult(string searchQuery)
+        {
+            var posts = _postService.GetBySearchQuery(searchQuery).Select(post => new PostListingModel
+            {
+                ID = post.ID,
+                AuthorName = post.AuthorName,
+                Content = post.Content,
+                Created = post.Created,
+                ForumID = post.ForumID,
+                Title = post.Title
+            }).ToList();
+
+            var model = new ForumTopicViewModel
+            {
+                Posts = posts
+            };
+
+            return View(model);
         }
 
         public IActionResult Privacy()

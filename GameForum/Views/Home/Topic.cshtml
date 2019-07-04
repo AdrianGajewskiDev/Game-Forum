@@ -1,6 +1,7 @@
 ﻿@model GameForum.ViewModels.Forum.ForumTopicViewModel
 
-    <div class="container d-inline-flex">
+<section id="forum-topic">
+    <div class="container d-inline-flex mt-3 mb-5">
         <h1 style="margin-bottom: 10px;">Welcome to @Model.ForumTitle Forum !!</h1>
 
         <form asp-controller="Home" asp-action="Search" method="post">
@@ -24,30 +25,32 @@
 
 
 
-@if (Model.Posts.Any())
-{
-    <div class="container">
-        <table class="table table-hover">
-            <tbody>
-                @foreach (var post in Model.Posts)
-                {
-                    <tr >
-                        <td>
-                            @post.AuthorName
-                        </td>
-                        <td>
-                            <a asp-controller="Post" asp-action="Index" asp-route-id="@post.ID">@post.Title</a>
-                        </td>
-                        <td>
-                            @post.Created
-                        </td>
-                    </tr>
-                }
-            </tbody>
-        </table>
-    </div>
-}
-else
-{
-    <h1>It looks like there are no posts at @Model.ForumTitle Forum yet :(</h1>
-}
+    @if (Model.Posts.Any())
+    {
+        <div class="container">
+            <table class="table table-hover">
+                <tbody>
+                    @foreach (var post in Model.Posts)
+                    {
+                        <tr>
+                            <td>
+                                @post.AuthorName
+                            </td>
+                            <td>
+                                <a asp-controller="Post" asp-action="Index" asp-route-id="@post.ID">@post.Title</a>
+                            </td>
+                            <td>
+                                @post.Created
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    }
+    else
+    {
+        <h1>It looks like there are no posts at @Model.ForumTitle Forum yet :(</h1>
+    }
+
+</section>

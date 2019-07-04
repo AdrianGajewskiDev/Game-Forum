@@ -49,6 +49,12 @@ namespace GameForum.Services
             return _dbContext.Posts.Where(x => x.ForumID == id).Where(x => x.Title.Contains(searchQuery) || x.Content.Contains(searchQuery));
         }
 
+        public IEnumerable<Post> GetBySearchQuery(string searchQuery)
+        {
+            return _dbContext.Posts.Where(x => x.Title.Contains(searchQuery) || x.Content.Contains(searchQuery));
+
+        }
+
         public IEnumerable<PostReply> GetPostRepliesByPostID(int postID)
         {
             return _dbContext.Replies.Where(x => x.PostID == postID);
